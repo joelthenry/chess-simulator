@@ -15,11 +15,18 @@ public class Board {
                 
                 //place the pieces onto the tile - some will be null if a piece doesnt go there
                 tiles[rank][file].setPiece(PieceFactory.createPiece(rank, file));
+
+
+                /////UTILIZES FACTORRY PATTERN TO CREATE PIECES based on board pos!!!!!!!!!
             }
         }
     }
 
     public Tile getTile(int rank, int file) {
         return tiles[rank][file];
+    }
+
+    public void updateBoard() {
+        renderer.BoardPrinter.printBoard(this);
     }
 }

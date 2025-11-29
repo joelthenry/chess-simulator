@@ -13,12 +13,13 @@ public class PieceFactory {
             case 5: return new Bishop(color);
             case 6: return new Knight(color);
             case 7: return new Rook(color);
-            default: throw new RuntimeException("Invalid file index");
+            default: throw new RuntimeException("Invalid file");
         }
     }
 
     public static Piece createPiece(int rank, int file) {
-        // choosing color and pawn vs back rank pieces
+
+        // chooses proper color and pawn or color and back rank piece
         
         if (rank == 1) {
             return new Pawn(Color.White);
@@ -30,7 +31,7 @@ public class PieceFactory {
             return createBackRank(file, Color.Black);
         }
         
-        // Return null for empty rows (2, 3, 4, 5)
+        // Return null for empty rows
         return null;
     }
 }
