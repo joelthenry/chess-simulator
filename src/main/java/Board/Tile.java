@@ -1,39 +1,34 @@
-package Board;
+package board;
+import pieces.Piece;
 
-import Pieces.Piece;
-import Pieces.Color;
+public class Tile {
+    private Piece piece;
+    protected int rank;
+    protected int file;
 
-public class Tile {// not sure if this needs to be expanded...
-    private final int rank;
-    private final int file;
-    private final Color color;
-
-    public Tile(Tile tile){
-        this(tile.getRank(), tile.getFile(), tile.getColor());
-    }
-
-    public Tile(int rank, int file, Color color) {
+    public Tile(int rank, int file) {
         this.rank = rank;
         this.file = file;
-        this.color = color;
+        this.piece = null;
     }
 
-    public Color getColor() {
-        return color;
+    public void setPiece(Piece piece) {
+        this.piece = piece;
     }
 
-    public int getRank() {
-        return rank;
-    }
-    public int getFile() {
-        return file;
+    public Piece getPiece() {
+        return this.piece;
     }
 
     public boolean isOccupied() {
-        return false;
+        return this.piece != null;
     }
 
-    public Piece getPiece(){
-        return null;
+    public int getRank() {
+        return this.rank;
+    }
+
+    public int getFile() {
+        return this.file;
     }
 }

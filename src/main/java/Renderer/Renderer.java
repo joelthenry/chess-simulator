@@ -1,6 +1,6 @@
-package Renderer;
+package renderer;
 
-import Board.Board;
+import board.Board;
 
 public interface Renderer {
     // The renderer will assume that the board is located at a constant location in memory, set by 'setBoard()'.
