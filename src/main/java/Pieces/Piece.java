@@ -13,6 +13,10 @@ public abstract class Piece {
     }
     
     public Color getColor() { return color; }
+
+    @Override
+    public abstract String toString(); 
+
     
     //public abstract List<Tile> getPossibleMoves(Tile currentTile);
 }

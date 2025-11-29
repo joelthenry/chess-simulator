@@ -1,7 +1,11 @@
-import Board.Board;
-import Renderer.Renderer;
+import board.Board;
+import renderer.BoardPrinter;
 
 public class Chess {
-    private Board board;
-    private Renderer renderer;
+    public static void main(String[] args) {
+        ///simple ascii board print test
+        Board board = new Board();
+        BoardPrinter printer = new BoardPrinter();
+        printer.printBoard(board);
+    }
 }
