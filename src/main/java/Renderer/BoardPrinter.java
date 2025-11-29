@@ -1,5 +1,6 @@
 package renderer;
-
+import java.util.List;
+import java.util.ArrayList;
 import board.Board;
 import board.Tile;
 
@@ -7,10 +8,17 @@ public class BoardPrinter {
     private static final int firstRankAndCollumn = 0;
     private static final int finalRankAndCollumn = 7;
 
-    ///////////WARNNING : Due to unicode decisions the white pieces are technicallly "black" in the unicode and vice versa but they appear correctly on the board
+    ///////////WARNNING : Due to unicode decisions the white pieces are technicallly "black" in the unicode and vice versa but they display correctly
 
     ////////// DEPENDENCY INJECTION!!!!!!!!!!!!!!!!!!!!!
+    //// default function uses an empty array for the highlighted moves if theres no selected piece
     public static void printBoard(Board board) {
+        printBoard(board, new ArrayList<>());
+    }
+
+
+
+    public static void printBoard(Board board, List<Tile> highlights) {
 
 
         //newline for spacing
@@ -30,11 +38,12 @@ public class BoardPrinter {
             for (int file = firstRankAndCollumn; file <= finalRankAndCollumn; file++) {
                 Tile tile = board.getTile(rank, file);
                 
-                if (tile.isOccupied()) {
-                    // if tile is occupied, print the piece
+                if (highlights.contains(tile)) {
+                    System.out.print(" X "); // Print X if it's a valid move
+                } 
+                else if (tile.isOccupied()) {
                     System.out.print(' ' + tile.getPiece().toString() + ' ');
                 } else {
-                    // If empty, print a placeholder
                     System.out.print("   ");
                 }
 

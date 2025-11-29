@@ -7,6 +7,8 @@ public class Tile {
     protected int file;
 
     public Tile(int rank, int file) {
+        this.rank = rank;
+        this.file = file;
         this.piece = null;
     }
 
