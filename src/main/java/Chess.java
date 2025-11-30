@@ -17,6 +17,8 @@ public class Chess {
         
         //////prints simple ascii board for development purposes
         BoardPrinter.printBoard(game.getBoard());
+
+        //open scanner for user input
         Scanner scanner = new Scanner(System.in);
 
         //primary game loop
@@ -27,13 +29,13 @@ public class Chess {
             //ask user to pick a piece to move
             Tile selectedTile = InputHandler.promptForSourceTile(scanner, game.getBoard(), game.getCurrentTurnColor());
 
-            // if user typed quit then we can exit the game with break
+            // if user typed quit then we can exit the game using break
             if (selectedTile == null) break;
 
             //otherwise try to get the piece on the selected tile
             Piece selectedPiece = selectedTile.getPiece();
 
-            //print board with all legal/possible moves highlighted
+            //print board where all legal/possible moves for the selected piece are highlighted
             List<Tile> possibleMoves = selectedPiece.getPossibleMoves(game.getBoard(), selectedTile);
             BoardPrinter.printBoard(game.getBoard(), possibleMoves);
 
@@ -42,6 +44,7 @@ public class Chess {
             //if piece was moved successfully then increment move count
             if (moveWasMade) { game.incrementMove(); }
         }
+        //close scanner upon exiting game loop to prevent resource leak
         scanner.close();
     }
 }

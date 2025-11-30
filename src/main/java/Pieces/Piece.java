@@ -28,7 +28,7 @@ public abstract class Piece {
         
         // which direction the piece can move.
         int[][] directions = getMoveDirections(); 
-        // Parent uses this array to generate possible moves for each piece
+        // Parent uses this array to generate possible move list for each piece
 
         for (int[] baseDir : directions) {
             //ensures symmetries are considered because chess pieces can move whatever way.
@@ -49,7 +49,7 @@ public abstract class Piece {
                         }
                         break; // Blocked
                     }
-                    // break if piece doesnt slide (means it only moves 1 space at a time)
+                    // break if piece doesnt slide bc we dont want to move further than 1 square if its not a sliding piece
                     if (!isSliding()) break; 
 
                     nextRank += dir[0];
