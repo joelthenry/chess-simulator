@@ -9,7 +9,7 @@ import board.Tile;
 class Pawn extends Piece { 
     public Pawn(Color c) { super(c); } 
 
-    //only necessary bc it extends Piece. we overwrite getPossibleMoves entirely for pawn movement rules anyways
+    //only necessary bc it extends Piece. we overwrite getmoves entirely for pawn movement rules anyways:
     @Override protected int[][] getMoveDirections() { return new int[][]{}; }
     @Override protected boolean isSliding() { return false; }
 
@@ -23,7 +23,7 @@ class Pawn extends Piece {
 
 
 
-
+//CUSTOM MOVE GENERATION FOR PAWN
     @Override
     public List<Tile> getPossibleMoves(Board board, Tile start) {
         List<Tile> moves = new ArrayList<>();
@@ -32,6 +32,7 @@ class Pawn extends Piece {
         int file = start.getFile();
         
         // if piece is white, it increases rank to move forward; if black, decreases rank
+        //bc pawns move in only one direction
         int direction = (this.getColor() == Color.White) ? 1 : -1;
         
         //checks if can move to given coordinate
